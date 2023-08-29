@@ -358,7 +358,8 @@ def mod_transform_before_build(
     )  # pylint: disable=not-callable
 
     if "num_attention_heads" in config and "hidden_size" in config:
-        max_seq_len = config["max_sequence_length"]
+        if "max_sequence_length" in config:
+            max_seq_len = config["max_sequence_length"]
 
         if args.max_seq_len > 0:
             max_seq_len = args.max_seq_len
